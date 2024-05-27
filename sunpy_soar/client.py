@@ -22,7 +22,7 @@ class SOARClient(BaseClient):
 
     join_needed = False
 
-    def search(self, *query, **kwargs):
+    def search(self, *query, **kwargs):  # NOQA: ARG002
         query = and_(*query)
         queries = walker.create(query)
 
@@ -217,7 +217,7 @@ class SOARClient(BaseClient):
         result_table.sort("Start time")
         return result_table
 
-    def fetch(self, query_results, *, path, downloader, **kwargs):
+    def fetch(self, query_results, *, path, downloader, **kwargs):  # NOQA: ARG002
         """
         Queue a set of results to be downloaded.
         `sunpy.net.base_client.BaseClient` does the actual downloading, so we
