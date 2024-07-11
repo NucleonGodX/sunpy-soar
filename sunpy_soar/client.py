@@ -89,7 +89,7 @@ class SOARClient(BaseClient):
         )
         if instrument_table:
             from_part += f" JOIN {instrument_table} AS h2 USING (data_item_oid)"
-            select_part += ", h2.detector, h2.wavelength, h2.dimension_index"
+            select_part += ", h2.detector, h2.wavelength, h2.dimension_index, h2.distance_sun_obsv"
         return where_part, from_part, select_part
 
     @staticmethod
@@ -194,6 +194,7 @@ class SOARClient(BaseClient):
                 "Filename": info["filename"],
                 "Filesize": info["filesize"],
                 "SOOP Name": info["soop_name"],
+                "Distance from sun": info["distance_sun_obsv"],
             },
         )
         if "detector" in info:
